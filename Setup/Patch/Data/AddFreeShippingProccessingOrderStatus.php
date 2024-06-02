@@ -11,7 +11,7 @@ use Magento\Sales\Model\Order\StatusFactory;
 use Magento\Sales\Model\ResourceModel\Order\Status as StatusResource;
 use Magento\Sales\Model\ResourceModel\Order\StatusFactory as StatusResourceFactory;
 
-class AddPaymentReceivedOrderStatus implements DataPatchInterface, PatchVersionInterface
+class AddFresShippingProcessingOrderStatus implements DataPatchInterface, PatchVersionInterface
 {
     /**
      * Status Factory
@@ -54,7 +54,7 @@ class AddPaymentReceivedOrderStatus implements DataPatchInterface, PatchVersionI
      */
     public function apply()
     {
-        $this->addPaymentReceivedStatus();
+        $this->addFreeShippingProcessingOrderStatus();
     }
 
     /**
@@ -81,19 +81,19 @@ class AddPaymentReceivedOrderStatus implements DataPatchInterface, PatchVersionI
         return '1.0.1';
     }
 
-    private function addPaymentReceivedStatus()
+    private function addFreeShippingProcessingOrderStatus()
     {
         /** @var StatusResource $statusResource */
         $statusResource = $this->statusResourceFactory->create();
         /** @var Status $status */
-        $paymentReceivedStatus = $this->statusFactory->create();
-        $paymentReceivedStatus->setData([
-            'status' => 'payment_received',
-            'label' => 'Payment Received',
+        $freeShippingProcessingStatus = $this->statusFactory->create();
+        $freeShippingProcessingStatus->setData([
+            'status' => 'free_shpping_processing',
+            'label' => 'free_shpping_processing Received',
         ]);
         try {
-            $statusResource->save($paymentReceivedStatus);
-            $paymentReceivedStatus->assignState(Order::STATE_PROCESSING, false, true);
+            $statusResource->save($freeShippingProcessingStatus);
+            $freeShippingProcessingStatus->assignState(Order::STATE_PROCESSING, false, true);
         } catch (AlreadyExistsException $exception) {
             return;
         }
