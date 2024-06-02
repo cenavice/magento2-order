@@ -9,9 +9,13 @@ class State
     {
         $currentState = $order->getState();
         if ($currentState == Order::STATE_NEW && $order->getIsInProcess()) {
-            // set custom order state and status for certain order
-            $order->setState(Order::STATE_PROCESSING)
-                ->setStatus($order->getConfig()->getStateDefaultStatus(Order::STATE_PROCESSING));
+            // set custom order state and status for free shipping order
+            $order->setState(Order::STATE_PROCESSING);
+            if ($order->getShippingMethod() == 'freeshipping_freeshipping') {
+                $order->setStatus('payment_received');
+            } else {
+                $order->setStatus($order->getConfig()->getStateDefaultStatus(Order::STATE_PROCESSING));
+            }
             $currentState = Order::STATE_PROCESSING;
         }
 
