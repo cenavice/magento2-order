@@ -16,7 +16,6 @@ class State
             } else {
                 $order->setStatus($order->getConfig()->getStateDefaultStatus(Order::STATE_PROCESSING));
             }
-            $currentState = Order::STATE_PROCESSING;
         }
 
         return [$order];
