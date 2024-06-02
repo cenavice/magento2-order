@@ -11,7 +11,7 @@ use Magento\Sales\Model\Order\StatusFactory;
 use Magento\Sales\Model\ResourceModel\Order\Status as StatusResource;
 use Magento\Sales\Model\ResourceModel\Order\StatusFactory as StatusResourceFactory;
 
-class AddFresShippingProcessingOrderStatus implements DataPatchInterface, PatchVersionInterface
+class AddFreeShippingProccessingOrderStatus implements DataPatchInterface, PatchVersionInterface
 {
     /**
      * Status Factory

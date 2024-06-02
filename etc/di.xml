@@ -3,4 +3,12 @@
     <type name="Magento\Sales\Model\ResourceModel\Order\Handler\State">
         <plugin name="cenaviceOrderHandlerState" type="Cenavice\Order\Plugin\Model\ResourceModel\Order\Handler\State" sortOrder="1" disabled="false" />
     </type>
+
+    <type name="Magento\Framework\Console\CommandListInterface">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="cenavice_order_create_bonus_order" xsi:type="object">Cenavice\Order\Console\Command\CreateBonusOrder</item>
+            </argument>
+        </arguments>
+    </type>
 </config>
