@@ -41,16 +41,6 @@ class CreateBonusOrder extends Command
     {
         $this->setName('cenavice:order:create-bonus-order');
         $this->setDescription('This is my console command.');
-        // $this->setDefinition(
-        //     [
-        //         new InputArgument(
-        //             'main_order_entity_id',
-        //             InputArgument::REQUIRED,
-        //             'Main Order Entity ID'
-        //         ),
-        //     ]
-        // );  
-
 
         parent::configure();
     }
