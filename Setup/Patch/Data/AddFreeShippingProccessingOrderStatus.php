@@ -88,8 +88,8 @@ class AddFreeShippingProccessingOrderStatus implements DataPatchInterface, Patch
         /** @var Status $status */
         $freeShippingProcessingStatus = $this->statusFactory->create();
         $freeShippingProcessingStatus->setData([
-            'status' => 'free_shpping_processing',
-            'label' => 'free_shpping_processing Received',
+            'status' => 'free_shipping_processing',
+            'label' => 'Free Shipping Processing',
         ]);
         try {
             $statusResource->save($freeShippingProcessingStatus);
