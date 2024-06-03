@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <cenavice_order>
+            <general>
+                <enable>1</enable>
+            </general>
+            <bonus_order>
+                <bonus_order_item_qty>1</bonus_order_item_qty>
+            </bonus_order>
+        </cenavice_order>
+    </default>
+</config>
