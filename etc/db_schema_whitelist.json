@@ -3,5 +3,10 @@
         "column": {
             "order_type": true
         }
+    },
+    "quote": {
+        "column": {
+            "order_type": true
+        }
     }
 }
