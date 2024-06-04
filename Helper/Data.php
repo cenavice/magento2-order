@@ -91,6 +91,12 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         
         $order = $this->orderFactory->create()->loadByIncrementId($orderIncrementId);
 
+        echo '<pre>';
+        print_r([
+            $this->syncOder(($order))
+        ]);
+        exit;
+
         $quote = $this->quoteFactory->create();
         $quote->setStore($order->getStore());
         $customer = $this->customerRepository->getById($order->getCustomerId());
@@ -195,5 +201,27 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         $bonusOrderItemQty = $this->scopeConfig->getValue('cenavice_order/bonus_order/bonus_order_item_qty', $storeScope);
 
         return $bonusOrderItemQty;
+    }
+
+    public function syncOder($order)
+    {
+        $ch = curl_init();
+
+        curl_setopt($ch, CURLOPT_URL, 'http://localhost:5678/webhook-test/order');
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, "{\"order_id\": 555}");
+
+        $headers = array();
+        $headers[] = 'Content-Type: application/json';
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+        $result = curl_exec($ch);
+        if (curl_errno($ch)) {
+            echo 'Error:' . curl_error($ch);
+        }
+        curl_close($ch);
+
+        return $result;
     }
 }
