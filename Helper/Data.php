@@ -123,7 +123,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         $shippingAddress->setCollectShippingRates(true)
                         ->collectShippingRates();
         $shippingAddress->setShippingMethod('freeshipping_freeshipping');
-        $quote->setPaymentMethod('checkmo');
+        $quote->setPaymentMethod('free');
         $quote->setInventoryProcessed(false);
         $quote->setOrderType('bonus');
         $quote->save();
